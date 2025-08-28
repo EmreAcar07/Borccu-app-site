@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: #1A1A1A;
+  background-color: #ffffff;
 }
 
 @keyframes fadeIn {
@@ -43,14 +43,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1A1A1A;
+  background: #f9fafb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #7B3FE4;
+  background: #111827;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6B2FD4;
+  background: #1f2937;
 }
