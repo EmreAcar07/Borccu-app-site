@@ -1,4 +1,16 @@
+import { useState } from 'react';
+
 export default function App() {
+  const [activeModal, setActiveModal] = useState<string | null>(null);
+
+  const openModal = (modalType: string) => {
+    setActiveModal(modalType);
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -371,9 +383,16 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">Borccu</h3>
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/logo.png" 
+                  alt="Borccu Logo" 
+                  className="h-8 w-8 mr-2"
+                />
+                <h3 className="text-xl font-bold">Borccu</h3>
+              </div>
               <p className="text-gray-400">
                 Arkadaşlarınızla olan borç-alacak ilişkilerinizi takip etmenin en kolay yolu.
               </p>
@@ -402,12 +421,222 @@ export default function App() {
                 <li><a href="#" className="hover:text-white">Kariyer</a></li>
               </ul>
             </div>
+            <div>
+              <h4 className="font-semibold mb-4">Yasal</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><button onClick={() => openModal('privacy')} className="hover:text-white text-left">Gizlilik Politikası</button></li>
+                <li><button onClick={() => openModal('terms')} className="hover:text-white text-left">Kullanım Koşulları</button></li>
+                <li><button onClick={() => openModal('kvkk')} className="hover:text-white text-left">KVKK Aydınlatma Metni</button></li>
+                <li><button onClick={() => openModal('disclaimer')} className="hover:text-white text-left">Yasal Uyarılar</button></li>
+              </ul>
+            </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 BorçTakip. Tüm hakları saklıdır.</p>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8">
+            <div className="text-center text-gray-400 mb-4">
+              <p>&copy; 2024 4pp Studios. Tüm hakları saklıdır.</p>
+              <p className="text-sm mt-2">
+                <a href="mailto:4ppstudioss@gmail.com" className="hover:text-white">4ppstudioss@gmail.com</a>
+              </p>
+            </div>
+            
+            <div className="text-xs text-gray-500 leading-relaxed">
+              <p className="mb-2">
+                <strong>Önemli Uyarı:</strong> Bu uygulama arkadaşlarınızla borç takibini kolaylaştırmak amacıyla tasarlanmıştır. 
+                Uygulama üzerinden yapılan işlemler yasal bağlayıcılığa sahip değildir ve finansal danışmanlık niteliğinde değildir.
+              </p>
+              <p>
+                Kullanıcılar uygulamayı kendi riskleri dahilinde kullanır. Kullanıcılar arası anlaşmazlıklardan Borccu sorumlu değildir.
+                18 yaş altı kullanıcılar için uygun değildir.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
+
+      {/* Modal System for Legal Documents */}
+      {activeModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+              <h2 className="text-2xl font-bold text-gray-900">
+                {activeModal === 'privacy' && 'Gizlilik Politikası'}
+                {activeModal === 'terms' && 'Kullanım Koşulları'}
+                {activeModal === 'kvkk' && 'KVKK Aydınlatma Metni'}
+                {activeModal === 'disclaimer' && 'Yasal Uyarılar / Feragatnameler'}
+              </h2>
+              <button 
+                onClick={closeModal}
+                className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+              >
+                ×
+              </button>
+            </div>
+            
+            <div className="p-6">
+              {activeModal === 'privacy' && (
+                <div>
+                  <p className="text-sm text-gray-600 mb-6"><strong>Son Güncelleme Tarihi:</strong> 29 Ağustos 2025</p>
+                  
+                  <div className="prose prose-gray max-w-none">
+                    <p className="mb-4">
+                      Borccu mobil uygulaması (bundan böyle "Uygulama" olarak anılacaktır), Mustafa Selman Durmaz 
+                      (bundan böyle "Veri Sorumlusu" olarak anılacaktır) tarafından işletilmektedir. Bu Gizlilik Politikası, 
+                      Uygulama aracılığıyla topladığımız kişisel verilerinizi nasıl topladığımızı, kullandığımızı, 
+                      sakladığımızı ve koruduğumuzu açıklamaktadır.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Toplanan Kişisel Veriler</h3>
+                    <p className="mb-4">Uygulamamız aracılığıyla aşağıdaki kişisel veriler toplanmaktadır:</p>
+                    <ul className="list-disc pl-6 mb-4">
+                      <li><strong>Kimlik ve İletişim Bilgileri:</strong> Ad, soyad, e-posta adresi, telefon numarası.</li>
+                      <li><strong>İşlem Bilgileri:</strong> Kimden ne kadar borç alındığı/verildiği, bu işlemlerin tarihleri, borç ödemeleri, transferler ve diğer kullanıcılarla olan etkileşimleriniz gibi borç takibiyle ilgili detaylar.</li>
+                      <li><strong>Cihaz Bilgileri:</strong> Cihaz modeli, işletim sistemi sürümü, IP adresi, uygulama kullanım süreleri ve çökme raporları gibi uygulamanın yüklü olduğu cihazla ilgili teknik veriler.</li>
+                    </ul>
+                    <p className="mb-4"><em>Konum bilgisi toplanmamaktadır.</em></p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Kişisel Verilerin Toplanma Amacı ve Hukuki Dayanağı</h3>
+                    <p className="mb-4">Topladığımız kişisel verileriniz aşağıdaki amaçlarla işlenmektedir:</p>
+                    <ul className="list-disc pl-6 mb-4">
+                      <li><strong>Hizmet Sunmak:</strong> Uygulamanın temel işlevi olan borç takibi hizmetini sağlamak ve kullanıcılar arası borç işlemlerini yönetmek.</li>
+                      <li><strong>Kullanıcı Deneyimini İyileştirmek:</strong> Uygulamanın performansını artırmak, hataları tespit etmek, yeni özellikler geliştirmek ve genel kullanıcı deneyimini iyileştirmek.</li>
+                      <li><strong>Güvenliği Sağlamak:</strong> Uygulamanın güvenliğini sağlamak, yetkisiz erişimleri engellemek ve kötüye kullanımı önlemek.</li>
+                      <li><strong>Pazarlama Faaliyetleri:</strong> Kullanıcıların açık rızası alınmak suretiyle, Uygulama ile ilgili duyurular, kampanyalar ve yeni özellikler hakkında bilgilendirme yapmak.</li>
+                    </ul>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Veri Güvenliği Önlemleri</h3>
+                    <p className="mb-4">Borccu, kullanıcıların kişisel verilerinin güvenliğini sağlamak amacıyla gerekli teknik ve idari tedbirleri almaktadır:</p>
+                    <ul className="list-disc pl-6 mb-4">
+                      <li>Tüm veri iletişimi SSL/TLS protokolü ile şifrelenmektedir.</li>
+                      <li>Kullanıcı parolaları hashlenmiş olarak saklanır, açık şekilde tutulmaz.</li>
+                      <li>Row Level Security (satır bazlı erişim kontrolü) ile her kullanıcı yalnızca kendi verilerine erişebilir.</li>
+                      <li>Verilere erişim yetkileri rol bazlı olarak sınırlandırılmıştır.</li>
+                      <li>Sunucular düzenli olarak güncellenmekte ve güvenlik yamaları uygulanmaktadır.</li>
+                    </ul>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">İletişim</h3>
+                    <p className="mb-4">
+                      Gizlilik politikamız hakkında sorularınız için: 
+                      <a href="mailto:4ppstudioss@gmail.com" className="text-blue-600 hover:text-blue-800 ml-1">4ppstudioss@gmail.com</a>
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {activeModal === 'terms' && (
+                <div>
+                  <p className="text-sm text-gray-600 mb-6"><strong>Son Güncelleme Tarihi:</strong> 29 Ağustos 2025</p>
+                  
+                  <div className="prose prose-gray max-w-none">
+                    <p className="mb-4">
+                      Bu Kullanım Koşulları, Borccu mobil uygulamasının ("Uygulama") kullanımına ilişkin hüküm ve koşulları belirlemektedir. 
+                      Uygulamayı kullanarak bu koşulları kabul etmiş sayılırsınız.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Uygulamanın Kullanımı ve Kısıtlamalar</h3>
+                    <p className="mb-4">
+                      Borccu uygulaması, arkadaşlarınızla borç takibini kolaylaştırmak amacıyla tasarlanmıştır. 
+                      Uygulama içindeki borç istemleri, tarafların karşılıklı onayı ile işleme alınır ve bu işlemlerin 
+                      <strong> yasal bir bağlayıcılığı bulunmamaktadır</strong>. Uygulama, kullanıcılar arasında mali ilişkileri 
+                      düzenlemeye yardımcı olan bir araç olup, yasal bir alacak-verecek ilişkisi yaratmaz.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Kullanıcı Sorumlulukları</h3>
+                    <ul className="list-disc pl-6 mb-4">
+                      <li>Kullanıcılar, Uygulama içinde oluşturdukları borç istemlerinin ve açıklamalarının doğruluğundan sorumludur.</li>
+                      <li>Kullanıcılar, Uygulama içindeki iletişimde hakaret, tehdit, taciz veya küçük düşürücü ifadeler kullanmamayı kabul eder.</li>
+                      <li>Bu tür uygunsuz davranışların tespiti halinde, mağdur olan kullanıcı ilgili kişiyi engelleyebilir ve gerekli yasal mercilere şikayette bulunabilir.</li>
+                    </ul>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Fikri Mülkiyet Hakları</h3>
+                    <p className="mb-4">
+                      Borccu uygulamasının tüm hakları, 4pp Studios adlı Google Play hesabına aittir. 
+                      Uygulamanın tasarımı, yazılımı, içeriği ve tüm fikri mülkiyet hakları 4pp Studios'a aittir ve izinsiz kullanılamaz.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Sorumluluk Sınırlamaları</h3>
+                    <p className="mb-4">
+                      Borccu uygulaması, güncellemeler veya teknik arızalar nedeniyle zaman zaman aksaklıklar yaşayabilir. 
+                      Uygulamanın kesintisiz veya hatasız çalışacağı garanti edilmez. Uygulama, kullanıcılar arasındaki 
+                      borç ilişkilerinden veya bu ilişkilerden doğabilecek anlaşmazlıklardan sorumlu değildir.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {activeModal === 'kvkk' && (
+                <div>
+                  <div className="prose prose-gray max-w-none">
+                    <p className="mb-4">
+                      Bu Aydınlatma Metni, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca, 
+                      kişisel verilerinizin hangi amaçlarla işleneceği, kimlere ve hangi amaçlarla aktarılabileceği, 
+                      kişisel veri toplamanın yöntemi ve hukuki sebebi ile KVKK'da yer alan haklarınız hakkında bilgi vermek amacıyla hazırlanmıştır.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">İlgili Kişinin Hakları (KVKK 11. Madde)</h3>
+                    <p className="mb-4">KVKK'nın 11. maddesi uyarınca, kişisel verilerinize ilişkin aşağıdaki haklara sahipsiniz:</p>
+                    <ul className="list-disc pl-6 mb-4">
+                      <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+                      <li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme</li>
+                      <li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+                      <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme</li>
+                      <li>Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme</li>
+                      <li>KVKK 7. maddede öngörülen şartlar çerçevesinde kişisel verilerin silinmesini veya yok edilmesini isteme</li>
+                    </ul>
+                    
+                    <p className="mb-4">
+                      Bu haklarınızı kullanmak için Uygulama içindeki ilgili ayarları kullanabilir veya 
+                      <a href="mailto:4ppstudioss@gmail.com" className="text-blue-600 hover:text-blue-800 ml-1">4ppstudioss@gmail.com</a> 
+                      e-posta adresine yazılı olarak başvurabilirsiniz.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {activeModal === 'disclaimer' && (
+                <div>
+                  <p className="text-sm text-gray-600 mb-6"><strong>Son Güncelleme Tarihi:</strong> 29 Ağustos 2025</p>
+                  
+                  <div className="prose prose-gray max-w-none">
+                    <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                      <div className="flex">
+                        <div className="ml-3">
+                          <p className="text-sm text-yellow-700">
+                            <strong>Önemli Uyarı:</strong> Borccu uygulaması, finansal veya hukuki bir danışmanlık hizmeti sunmamaktadır. 
+                            Uygulama üzerinden yapılan tüm işlemler ve kaydedilen borç bilgileri, yalnızca kullanıcıların 
+                            kendi aralarındaki takibi kolaylaştırmak amacıyla oluşturulmuştur ve <strong>yasal bir bağlayıcılığı bulunmamaktadır</strong>.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Sorumluluk Sınırlamaları</h3>
+                    <ul className="list-disc pl-6 mb-4">
+                      <li>Uygulama, kullanıcılar arasındaki borç ilişkilerinden veya bu ilişkilerden doğabilecek anlaşmazlıklardan sorumlu değildir.</li>
+                      <li>Kullanıcılar, Uygulamayı kendi riskleri ve sorumlulukları dahilinde kullanır.</li>
+                      <li>Uygulama, zaman zaman güncelleme, bakım veya teknik arızalar nedeniyle geçici olarak erişilemez olabilir.</li>
+                      <li>Uygulamanın kesintisiz veya hatasız çalışacağı garanti edilmez.</li>
+                    </ul>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Yaş Sınırlaması</h3>
+                    <p className="mb-4">
+                      Bu uygulama <strong>18 yaş altı kullanıcılar için uygun değildir</strong>. 
+                      Uygulamayı kullanmak isteyen kişilerin 18 yaşından büyük olduklarını onaylamaları gerekmektedir.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-gray-900 mt-8 mb-4">Uyuşmazlık Çözümü</h3>
+                    <p className="mb-4">
+                      Bu belgelerden doğabilecek uyuşmazlıkların çözümünde öncelikle arabuluculuk yoluna başvurulabilir. 
+                      Arabuluculuk ile çözülemeyen uyuşmazlıklarda, Türk Hukuku uygulanacak olup, 
+                      İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
