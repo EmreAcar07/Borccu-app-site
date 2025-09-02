@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import TermsOfService from "./components/TermsOfService";
-import KVKK from "./components/KVKK";
-import Disclaimer from "./components/Disclaimer";
+import HomePage from "./pages/HomePage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import KVKK from "./pages/KVKK";
+import Disclaimer from "./pages/Disclaimer";
+import AboutPage from "./pages/AboutPage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/kvkk" element={<KVKK />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </Router>
   );
