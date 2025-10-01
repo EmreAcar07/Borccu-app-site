@@ -68,9 +68,12 @@ export default function Footer() {
                 </span>
               </li>
               <li>
-                <span className="text-gray-500 cursor-not-allowed text-xs sm:text-sm">
+                <a
+                  href="/faq"
+                  className="hover:text-white transition-colors text-xs sm:text-sm"
+                >
                   SSS
-                </span>
+                </a>
               </li>
             </ul>
           </div>

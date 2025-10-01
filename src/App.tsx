@@ -5,12 +5,14 @@ import TermsOfService from "./pages/TermsOfService";
 import KVKK from "./pages/KVKK";
 import Disclaimer from "./pages/Disclaimer";
 import AboutPage from "./pages/AboutPage";
+import FAQ from "./pages/FAQ";
 
 export default function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/faq" element={<FAQ />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/kvkk" element={<KVKK />} />
