@@ -7,6 +7,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ["lucide-react"],
   },
+  server: {
+    host: true, // Enable network access
+  },
   build: {
     outDir: "dist",
     rollupOptions: {

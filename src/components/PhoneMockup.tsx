@@ -1,3 +1,4 @@
+import { Battery, Wifi, Signal } from "lucide-react";
 export default function PhoneMockup() {
   return (
     <div className="flex justify-center lg:justify-end relative mt-8 lg:mt-0 order-first lg:order-last">
@@ -14,16 +15,14 @@ export default function PhoneMockup() {
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-3 md:w-24 md:h-4 lg:w-32 md:h-6 bg-gray-900 rounded-b-lg md:rounded-b-xl lg:rounded-b-2xl z-10"></div>
 
               {/* App Content - Borccu Style */}
-              <div className="pt-6 md:pt-8 lg:pt-12 px-2 md:px-3 lg:px-4 h-full bg-gradient-to-b from-white to-gray-50">
+              <div className="pt-6 md:pt-8 lg:pt-2 px-2 md:px-3 lg:px-4 h-full bg-gradient-to-b from-white to-gray-50">
                 {/* Status bar content */}
-                <div className="flex justify-between items-center text-xs font-semibold mb-3 md:mb-4 lg:mb-6">
+                <div className="flex justify-between items-center text-xs font-semibold mb-12 mx-2">
                   <span>9:41</span>
                   <div className="flex items-center space-x-1">
-                    <div className="w-2 h-1 md:w-3 md:h-1.5 lg:w-4 lg:h-2 bg-gray-900 rounded-sm"></div>
-                    <div className="w-1 h-1 bg-gray-900 rounded-full"></div>
-                    <div className="w-4 h-2 md:w-5 md:h-2.5 lg:w-6 lg:h-3 border border-gray-900 rounded-sm">
-                      <div className="w-2 h-0.5 md:w-3 md:h-0.5 lg:w-4 lg:h-1 bg-gray-900 rounded-xs m-0.5"></div>
-                    </div>
+                    <Wifi className="w-4 h-4 text-gray-900" />
+                    <Signal className="w-4 h-4 text-gray-900" />
+                    <Battery className="w-4 h-4 text-gray-900" />
                   </div>
                 </div>
 
