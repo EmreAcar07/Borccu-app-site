@@ -41,14 +41,20 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <span className="text-gray-500 cursor-not-allowed text-xs sm:text-sm">
+                <a
+                  href="#pricing"
+                  className="hover:text-white transition-colors text-xs sm:text-sm"
+                >
                   Fiyatlandırma
-                </span>
+                </a>
               </li>
               <li>
-                <span className="text-gray-500 cursor-not-allowed text-xs sm:text-sm">
+                <a
+                  href="/security"
+                  className="hover:text-white transition-colors text-xs sm:text-sm"
+                >
                   Güvenlik
-                </span>
+                </a>
               </li>
             </ul>
           </div>
@@ -63,9 +69,12 @@ export default function Footer() {
                 </span>
               </li>
               <li>
-                <span className="text-gray-500 cursor-not-allowed text-xs sm:text-sm">
+                <a
+                  href="/contact"
+                  className="hover:text-white transition-colors text-xs sm:text-sm"
+                >
                   İletişim
-                </span>
+                </a>
               </li>
               <li>
                 <a
@@ -95,11 +104,11 @@ export default function Footer() {
                   Blog
                 </span>
               </li>
-              <li>
+              {/* <li>
                 <span className="text-gray-500 cursor-not-allowed text-xs sm:text-sm">
                   Kariyer
                 </span>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="text-center sm:text-left">

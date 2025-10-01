@@ -10,37 +10,37 @@ import {
 export default function FeaturesSection() {
   const features = [
     {
-      icon: <DollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
+      icon: <DollarSign className="w-8 h-8 sm:w-10 sm:h-10 text-gray-800" />,
       title: "Kolay Borç Takibi",
       description:
         "Kimden ne kadar borç aldığınızı, kime ne kadar borç verdiğinizi tek bakışta görün. Karmaşık hesaplamalara gerek yok.",
     },
     {
-      icon: <Handshake className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
+      icon: <Handshake className="w-8 h-8 sm:w-10 sm:h-10 text-gray-800" />,
       title: "Karşılıklı Onay",
       description:
         "Tüm borç işlemleri karşılıklı onay ile gerçekleşir. Hem siz hem de arkadaşınız işlemi onaylamadan borç kaydı oluşmaz.",
     },
     {
-      icon: <Bell className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
+      icon: <Bell className="w-8 h-8 sm:w-10 sm:h-10 text-gray-800" />,
       title: "Anında Bildirimler",
       description:
         "Yeni borç istekleri, ödemeler ve hatırlatmalar için anında bildirim alın. Hiçbir önemli işlemi kaçırmayın.",
     },
     {
-      icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
+      icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-gray-800" />,
       title: "Güvenli Veri",
       description:
         "Tüm verileriniz şifrelenmiş olarak saklanır. Sadece siz ve arkadaşlarınız kendi verilerinize erişebilir.",
     },
     {
-      icon: <BarChart3 className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
+      icon: <BarChart3 className="w-8 h-8 sm:w-10 sm:h-10 text-gray-800" />,
       title: "Detaylı Raporlar",
       description:
         "Aylık, yıllık borç raporları ile finansal durumunuzu analiz edin. Hangi arkadaşınızla ne kadar borç ilişkiniz var görün.",
     },
     {
-      icon: <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-white" />,
+      icon: <Globe className="w-8 h-8 sm:w-10 sm:h-10 text-gray-800" />,
       title: "Çoklu Para Birimi",
       description:
         "Farklı para birimlerinde borç takibi yapın. TL, USD, EUR ve daha fazlası. Döviz kurları otomatik güncellenir.",
@@ -61,45 +61,45 @@ export default function FeaturesSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-300"
-            >
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-gray-500 to-gray-600 rounded-xl sm:rounded-2xl flex items-center justify-center text-lg sm:text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-              </div>
-
-              <div className="pt-6 sm:pt-8 text-center">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
-                  {feature.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-
-              <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+          {features.map((feature, index) => {
+            const themeBox =
+              index % 3 === 0
+                ? "bg-blue-50 border-blue-200"
+                : index % 3 === 1
+                ? "bg-violet-50 border-violet-200"
+                : "bg-emerald-50 border-emerald-200";
+            const themeDot =
+              index % 3 === 0
+                ? "bg-blue-100"
+                : index % 3 === 1
+                ? "bg-violet-100"
+                : "bg-emerald-100";
+            return (
+              <div
+                key={index}
+                className="group relative bg-white rounded-xl sm:rounded-2xl p-6 shadow-sm transition-all duration-300 border border-gray-100"
+              >
+                {/* Floating icon box */}
+                <div className="absolute inset-x-0 top-12 z-10 flex justify-center">
+                  <div
+                    className={`card-box w-10 h-10 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center border ${themeBox} transition-all duration-300 group-hover:-translate-y-20 group-hover:scale-75`}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
+                    {feature.icon}
+                  </div>
+                </div>
+
+                {/* Title and description */}
+                <div className="pt-20 text-center transition-all duration-300 translate-y-12 group-hover:-translate-y-4">
+                  <h3 className="card-title text-lg sm:text-xl font-semibold text-gray-900 transition-all duration-300 group-hover:-translate-y-2">
+                    {feature.title}
+                  </h3>
+                  <p className="card-description text-sm sm:text-base text-gray-600 leading-relaxed opacity-0 translate-y-3 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                    {feature.description}
+                  </p>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

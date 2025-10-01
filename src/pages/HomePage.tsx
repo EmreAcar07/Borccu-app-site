@@ -5,6 +5,7 @@ import HowItWorksSection from "../components/HowItWorksSection";
 // import StatsSection from "../components/StatsSection";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
+import PricingSection from "../components/PricingSection";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,11 @@ export default function HomePage() {
       <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
 
       <HowItWorksSection />
+
+      {/* Gradient Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+
+      <PricingSection />
 
       {/* Gradient Divider */}
       <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
