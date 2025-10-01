@@ -72,10 +72,10 @@ export default function AboutPage() {
             Ekibimiz
           </h2>
           <p className="mb-4">
-            Borccu, Mustafa Selman Durmaz tarafından geliştirilmiş ve 4pp
-            Studios çatısı altında sunulmaktadır. Mobil uygulama geliştirme
-            konusunda deneyimli ekibimiz, kullanıcılarımızın ihtiyaçlarını en
-            iyi şekilde karşılayan çözümler üretmek için çalışmaktadır.
+            Borccu, 4pp Studios çatısı altında geliştirilmekte ve sunulmaktadır.
+            Mobil uygulama geliştirme konusunda deneyimli ekibimiz,
+            kullanıcılarımızın ihtiyaçlarını en iyi şekilde karşılayan çözümler
+            üretmek için çalışmaktadır.
           </p>
 
           <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">
